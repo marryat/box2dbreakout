@@ -125,7 +125,22 @@
             CCSprite *sprite = (CCSprite *)b->GetUserData();
             sprite.position = ccp(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
             sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+
+            if (sprite.tag == 1) {
+                static int maxSpeed = 10;
+                
+                b2Vec2 velocity = b->GetLinearVelocity();
+                float32 speed = velocity.Length();
+                
+                if (speed > maxSpeed) {
+                    b->SetLinearDamping(0.5);
+                } else if (speed < maxSpeed) {
+                    b->SetLinearDamping(0.0);
+                }
+            }
+
         }
+        
     }
 }
 
