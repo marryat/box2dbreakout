@@ -8,6 +8,7 @@
 
 #import "cocos2d.h"
 #import "Box2D.h"
+#import "MyContactListener.h"
 
 @interface HelloWorldLayer : CCLayer {   
     b2World *_world;
@@ -19,6 +20,8 @@
     b2Fixture *_paddleFixture;
     
     b2MouseJoint *_mouseJoint;
+    
+    MyContactListener *_contactListener;
 }
 
 + (id) scene;

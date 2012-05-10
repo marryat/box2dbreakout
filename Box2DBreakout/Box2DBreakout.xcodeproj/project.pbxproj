@@ -161,6 +161,7 @@
 		8520E444155B1EBD00A19C57 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 8520E443155B1EBD00A19C57 /* blocks.png */; };
 		8520E44B155C4E4100A19C57 /* Ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8520E44A155C4E4100A19C57 /* Ball.jpg */; };
 		8520E44D155C545500A19C57 /* Paddle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8520E44C155C545500A19C57 /* Paddle.jpg */; };
+		8520E450155C5EBD00A19C57 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8520E44F155C5EBD00A19C57 /* MyContactListener.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -477,6 +478,8 @@
 		8520E443155B1EBD00A19C57 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		8520E44A155C4E4100A19C57 /* Ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ball.jpg; sourceTree = "<group>"; };
 		8520E44C155C545500A19C57 /* Paddle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paddle.jpg; sourceTree = "<group>"; };
+		8520E44E155C5EBD00A19C57 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
+		8520E44F155C5EBD00A19C57 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +542,8 @@
 				8520E43A155B1EBD00A19C57 /* RootViewController.m */,
 				8520E43C155B1EBD00A19C57 /* HelloWorldLayer.h */,
 				8520E43D155B1EBD00A19C57 /* HelloWorldLayer.mm */,
+				8520E44E155C5EBD00A19C57 /* MyContactListener.h */,
+				8520E44F155C5EBD00A19C57 /* MyContactListener.mm */,
 				8520E43F155B1EBD00A19C57 /* GLES-Render.h */,
 				8520E440155B1EBD00A19C57 /* GLES-Render.mm */,
 				8520E442155B1EBD00A19C57 /* GameConfig.h */,
@@ -1216,6 +1221,7 @@
 				8520E43B155B1EBD00A19C57 /* RootViewController.m in Sources */,
 				8520E43E155B1EBD00A19C57 /* HelloWorldLayer.mm in Sources */,
 				8520E441155B1EBD00A19C57 /* GLES-Render.mm in Sources */,
+				8520E450155C5EBD00A19C57 /* MyContactListener.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

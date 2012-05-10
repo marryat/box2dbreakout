@@ -108,6 +108,10 @@
         jointDef.Initialize(_paddleBody, _groundBody, _paddleBody->GetWorldCenter(), worldAxis);
         _world->CreateJoint(&jointDef);
         
+        //Create contact listener
+        _contactListener = new MyContactListener();
+        _world->SetContactListener(_contactListener);
+        
         //Applies stating force to the ball
         b2Vec2 force = b2Vec2(10, 10);
         ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
@@ -120,6 +124,7 @@
 
 - (void)tick:(ccTime) dt {
     _world->Step(dt, 10, 10);
+    
     for (b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL) {
             CCSprite *sprite = (CCSprite *)b->GetUserData();
@@ -138,10 +143,18 @@
                     b->SetLinearDamping(0.0);
                 }
             }
-
         }
-        
     }
+    
+    std::vector<MyContact>::iterator pos;
+    for (pos = _contactListener->_contacts.begin(); pos != _contactListener->_contacts.end(); ++pos) {
+        MyContact contact = *pos;
+        
+        if ((contact.fixtureA == _bottomFixture && contact.fixtureB == _ballFixture) || (contact.fixtureA == _ballFixture && contact.fixtureB == _bottomFixture)) {
+            NSLog(@"Ball hit bottom!");
+        }
+    }
+        
 }
 
 //Creates the MouseJoint to get the paddle to move towards where the tap event is created.
@@ -202,6 +215,8 @@
     
     delete _world;
     _groundBody = NULL;
+    delete _contactListener;
+    
     [super dealloc];
 }
 
