@@ -14,6 +14,9 @@
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
     b2Fixture *_ballFixture;
+    
+    b2Body *_paddleBody;
+    b2Fixture *_paddleFixture;
 }
 
 + (id) scene;

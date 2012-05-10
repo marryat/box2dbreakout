@@ -160,6 +160,7 @@
 		8520E441155B1EBD00A19C57 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8520E440155B1EBD00A19C57 /* GLES-Render.mm */; };
 		8520E444155B1EBD00A19C57 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 8520E443155B1EBD00A19C57 /* blocks.png */; };
 		8520E44B155C4E4100A19C57 /* Ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8520E44A155C4E4100A19C57 /* Ball.jpg */; };
+		8520E44D155C545500A19C57 /* Paddle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8520E44C155C545500A19C57 /* Paddle.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -475,6 +476,7 @@
 		8520E442155B1EBD00A19C57 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		8520E443155B1EBD00A19C57 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		8520E44A155C4E4100A19C57 /* Ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ball.jpg; sourceTree = "<group>"; };
+		8520E44C155C545500A19C57 /* Paddle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paddle.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -562,6 +564,7 @@
 				8520E283155B1EBA00A19C57 /* Info.plist */,
 				8520E284155B1EBA00A19C57 /* iTunesArtwork */,
 				8520E443155B1EBD00A19C57 /* blocks.png */,
+				8520E44C155C545500A19C57 /* Paddle.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1068,6 +1071,7 @@
 				8520E285155B1EBA00A19C57 /* iTunesArtwork in Resources */,
 				8520E444155B1EBD00A19C57 /* blocks.png in Resources */,
 				8520E44B155C4E4100A19C57 /* Ball.jpg in Resources */,
+				8520E44D155C545500A19C57 /* Paddle.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
