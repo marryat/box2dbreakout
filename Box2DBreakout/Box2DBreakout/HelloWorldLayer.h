@@ -17,6 +17,8 @@
     
     b2Body *_paddleBody;
     b2Fixture *_paddleFixture;
+    
+    b2MouseJoint *_mouseJoint;
 }
 
 + (id) scene;

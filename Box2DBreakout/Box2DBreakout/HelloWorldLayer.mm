@@ -26,6 +26,9 @@
 - (id)init {
     
     if ((self=[super init])) {
+        //Set up Cocos2d Items
+        self.isTouchEnabled = YES;
+        
         CGSize winSize = [CCDirector sharedDirector].winSize;
         
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
@@ -116,6 +119,60 @@
             sprite.position = ccp(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
             sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
         }
+    }
+}
+
+//Creates the MouseJoint to get the paddle to move towards where the tap event is created.
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (_mouseJoint != NULL) return;
+    
+    UITouch *myTouch = [touches anyObject];
+    CGPoint location = [myTouch locationInView:[myTouch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    
+    if (_paddleFixture->TestPoint(locationWorld)) {
+        b2MouseJointDef md;
+        md.bodyA = _groundBody;
+        md.bodyB = _paddleBody;
+        md.target = locationWorld;
+        //stops the paddle form shooting off the screen i.e. stops the paddle.
+        md.collideConnected = true;
+        md.maxForce = 1000.0f * _paddleBody->GetMass();
+        
+        _mouseJoint = (b2MouseJoint *)_world->CreateJoint(&md);
+        _paddleBody->SetAwake(true);
+    }
+}
+
+//Updates the MouseJoint so that the paddle still moves to where the tap event has moved to
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    if (_mouseJoint == NULL) return;
+    
+    UITouch *myTouch = [touches anyObject];
+    CGPoint location = [myTouch locationInView:[myTouch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    
+    _mouseJoint->SetTarget(locationWorld);
+}
+
+//Destroys MouseJoint when touch ends to stop movement
+- (void)ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
+
+    if (_mouseJoint) {
+        _world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }
+}
+
+//Destroys MouseJoint when touch ends to stop movement
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (_mouseJoint) {
+        _world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
     }
 }
 
