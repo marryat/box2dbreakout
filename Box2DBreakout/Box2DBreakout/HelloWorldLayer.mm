@@ -99,7 +99,14 @@
         paddleShapeDef.density = 10.0f;
         paddleShapeDef.friction = 0.4f;
         paddleShapeDef.restitution = 0.1f;
-        _paddleFixture = _paddleBody->CreateFixture(&paddleShapeDef);        
+        _paddleFixture = _paddleBody->CreateFixture(&paddleShapeDef);
+        
+        // Restrict paddle along the x axis
+        b2PrismaticJointDef jointDef;
+        b2Vec2 worldAxis(1.0f, 0.0f);
+        jointDef.collideConnected = true;
+        jointDef.Initialize(_paddleBody, _groundBody, _paddleBody->GetWorldCenter(), worldAxis);
+        _world->CreateJoint(&jointDef);
         
         //Applies stating force to the ball
         b2Vec2 force = b2Vec2(10, 10);
