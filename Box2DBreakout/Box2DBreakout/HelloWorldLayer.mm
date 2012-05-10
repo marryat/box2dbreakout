@@ -73,8 +73,31 @@
         ballShapeDef.restitution = 1.0f;
         _ballFixture = ballBody->CreateFixture(&ballShapeDef);
         
+        b2Vec2 force = b2Vec2(10, 10);
+        ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
+        
+        [self schedule:@selector(tick:)];
+        
     }
     return self;
+}
+
+- (void)tick:(ccTime) dt {
+    _world->Step(dt, 10, 10);
+    for (b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
+        if (b->GetUserData() != NULL) {
+            CCSprite *sprite = (CCSprite *)b->GetUserData();
+            sprite.position = ccp(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
+            sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+        }
+    }
+}
+
+- (void)dealloc {
+    
+    delete _world;
+    _groundBody = NULL;
+    [super dealloc];
 }
 
 @end
