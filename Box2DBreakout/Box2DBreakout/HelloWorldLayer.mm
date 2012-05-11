@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
+#import "GameOverScene.h"
 
 #define PTM_RATIO 32
 
@@ -151,7 +152,10 @@
         MyContact contact = *pos;
         
         if ((contact.fixtureA == _bottomFixture && contact.fixtureB == _ballFixture) || (contact.fixtureA == _ballFixture && contact.fixtureB == _bottomFixture)) {
-            NSLog(@"Ball hit bottom!");
+            
+            GameOverScene *gameOverScene = [GameOverScene node];
+            [gameOverScene.layer.label setString:@"You Lose :["];
+            [[CCDirector sharedDirector] replaceScene:gameOverScene];
         }
     }
         
