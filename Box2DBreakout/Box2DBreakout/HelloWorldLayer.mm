@@ -179,6 +179,7 @@
         }
     }
     
+    std::vector<b2Body *>toDestroy;
     std::vector<MyContact>::iterator pos;
     for (pos = _contactListener->_contacts.begin(); pos != _contactListener->_contacts.end(); ++pos) {
         MyContact contact = *pos;
@@ -189,8 +190,37 @@
             [gameOverScene.layer.label setString:@"You Lose :["];
             [[CCDirector sharedDirector] replaceScene:gameOverScene];
         }
-    }
         
+        b2Body *bodyA = contact.fixtureA->GetBody();
+        b2Body *bodyB = contact.fixtureB->GetBody();
+        if (bodyA->GetUserData() != NULL && bodyB->GetUserData() != NULL) {
+            CCSprite *spriteA = (CCSprite *) bodyA->GetUserData();
+            CCSprite *spriteB = (CCSprite *) bodyB->GetUserData();
+            
+            //Sprite A = ball, Sprite B = block
+            if (spriteA.tag == 1 && spriteB.tag == 2) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
+                }
+            }
+            //Sprite B = block, Sprite A = ball
+            else if (spriteA.tag == 2 && spriteB.tag == 1) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    toDestroy.push_back(bodyA);
+                }
+            }
+        }
+    }
+    
+    std::vector<b2Body *>::iterator pos2;
+    for (pos2 = toDestroy.begin(); pos2 != toDestroy.end(); ++pos2) {
+        b2Body *body = *pos2;
+        if (body->GetUserData() != NULL) {
+            CCSprite *sprite = (CCSprite *) body->GetUserData();
+            [self removeChild:sprite cleanup:YES];
+        }
+        _world->DestroyBody(body);
+    }
 }
 
 //Creates the MouseJoint to get the paddle to move towards where the tap event is created.
