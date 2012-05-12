@@ -163,6 +163,7 @@
 		8520E44D155C545500A19C57 /* Paddle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8520E44C155C545500A19C57 /* Paddle.jpg */; };
 		8520E450155C5EBD00A19C57 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8520E44F155C5EBD00A19C57 /* MyContactListener.mm */; };
 		8520E453155DC7BB00A19C57 /* GameOverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8520E452155DC7BB00A19C57 /* GameOverScene.mm */; };
+		8520E459155DCCFD00A19C57 /* Block.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8520E458155DCCFD00A19C57 /* Block.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -483,6 +484,7 @@
 		8520E44F155C5EBD00A19C57 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 		8520E451155DC7BB00A19C57 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		8520E452155DC7BB00A19C57 /* GameOverScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameOverScene.mm; sourceTree = "<group>"; };
+		8520E458155DCCFD00A19C57 /* Block.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Block.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -571,6 +573,7 @@
 				8520E27D155B1EBA00A19C57 /* Icon-Small@2x.png */,
 				8520E27F155B1EBA00A19C57 /* Icon.png */,
 				8520E281155B1EBA00A19C57 /* Icon@2x.png */,
+				8520E458155DCCFD00A19C57 /* Block.jpg */,
 				8520E283155B1EBA00A19C57 /* Info.plist */,
 				8520E284155B1EBA00A19C57 /* iTunesArtwork */,
 				8520E443155B1EBD00A19C57 /* blocks.png */,
@@ -1082,6 +1085,7 @@
 				8520E444155B1EBD00A19C57 /* blocks.png in Resources */,
 				8520E44B155C4E4100A19C57 /* Ball.jpg in Resources */,
 				8520E44D155C545500A19C57 /* Paddle.jpg in Resources */,
+				8520E459155DCCFD00A19C57 /* Block.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1281,6 +1285,7 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Box2DBreakout/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"Box2DBreakout/libs\"";
@@ -1298,6 +1303,7 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Box2DBreakout/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"Box2DBreakout/libs\"";

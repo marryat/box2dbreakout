@@ -113,6 +113,38 @@
         _contactListener = new MyContactListener();
         _world->SetContactListener(_contactListener);
         
+        //Creates 4 blocks
+        for(int i = 0; i < 4; i++) {
+            static int padding=20;
+            
+            //Create block and add it to the layer
+            CCSprite *block = [CCSprite spriteWithFile:@"Block.jpg"];
+            int xOffset = padding+block.contentSize.width/2+((block.contentSize.width+padding)*i);
+            block.position = ccp(xOffset, 250);
+            block.tag = 2;
+            [self addChild:block];
+            
+            //Create block body
+            b2BodyDef blockBodyDef;
+            blockBodyDef.type = b2_dynamicBody;
+            blockBodyDef.position.Set(xOffset/PTM_RATIO, 250/PTM_RATIO);
+            blockBodyDef.userData = block;
+            b2Body *blockBody = _world->CreateBody(&blockBodyDef);
+            
+            //Create block shape
+            b2PolygonShape blockShape;
+            blockShape.SetAsBox(block.contentSize.width/PTM_RATIO/2, block.contentSize.height/PTM_RATIO/2);
+            
+            //Create shape definition and add to body
+            b2FixtureDef blockShapeDef;
+            blockShapeDef.shape = &blockShape;
+            blockShapeDef.density = 10.0;
+            blockShapeDef.friction = 0.0;
+            blockShapeDef.restitution = 0.1f;
+            blockBody->CreateFixture(&blockShapeDef);
+            
+        }
+        
         //Applies stating force to the ball
         b2Vec2 force = b2Vec2(10, 10);
         ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
